@@ -157,12 +157,12 @@ mean(daily_steps2$total_steps)
 ####Are there differences in activity patterns between weekdays and weekends?
 
 ```r
-ddd <- xDFT
-ddd <- mutate(ddd, wkflag=ifelse(weekdays(ddd$date) %in% c("Saturday","Sunday"),"Weekend","Weekday"))
+# ddd <- xDFT
+xDFT <- mutate(xDFT, wkflag=ifelse(weekdays(xDFT$date) %in% c("Saturday","Sunday"),"Weekend","Weekday"))
 
-ddd$wkflag <- as.factor(ddd$wkflag)
+xDFT$wkflag <- as.factor(xDFT$wkflag)
 
-avg_steps2 <- summarize(group_by(ddd,wkflag,interval),average_steps=mean(steps))
+avg_steps2 <- summarize(group_by(xDFT,wkflag,interval),average_steps=mean(steps))
 
 library(lattice)
 xyplot(avg_steps2$average_steps ~ avg_steps2$interval|avg_steps2$wkflag, layout=c(1,2),
