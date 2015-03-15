@@ -156,12 +156,12 @@ hist(daily_steps$total_steps,col=&quot;green&quot;,main=&quot;Daily Steps no NAs
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level4">
 <h4>Are there differences in activity patterns between weekdays and weekends?</h4>
-<pre class="r"><code>ddd &lt;- xDFT
-ddd &lt;- mutate(ddd, wkflag=ifelse(weekdays(ddd$date) %in% c(&quot;Saturday&quot;,&quot;Sunday&quot;),&quot;Weekend&quot;,&quot;Weekday&quot;))
+<pre class="r"><code># ddd &lt;- xDFT
+xDFT &lt;- mutate(xDFT, wkflag=ifelse(weekdays(xDFT$date) %in% c(&quot;Saturday&quot;,&quot;Sunday&quot;),&quot;Weekend&quot;,&quot;Weekday&quot;))
 
-ddd$wkflag &lt;- as.factor(ddd$wkflag)
+xDFT$wkflag &lt;- as.factor(xDFT$wkflag)
 
-avg_steps2 &lt;- summarize(group_by(ddd,wkflag,interval),average_steps=mean(steps))
+avg_steps2 &lt;- summarize(group_by(xDFT,wkflag,interval),average_steps=mean(steps))
 
 library(lattice)
 xyplot(avg_steps2$average_steps ~ avg_steps2$interval|avg_steps2$wkflag, layout=c(1,2),
