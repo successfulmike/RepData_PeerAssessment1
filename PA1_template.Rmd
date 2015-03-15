@@ -109,7 +109,8 @@ ddd$wkflag <- as.factor(ddd$wkflag)
 avg_steps2 <- summarize(group_by(ddd,wkflag,interval),average_steps=mean(steps))
 
 library(lattice)
-xyplot(avg_steps2$average_steps ~ avg_steps2$interval|avg_steps2$wkflag, layout=c(1,2))
+xyplot(avg_steps2$average_steps ~ avg_steps2$interval|avg_steps2$wkflag, layout=c(1,2),
+       main="Weekday/end Activity",ylab="Average Number of Steps",xlab="5min Intervals",type="l",col="magenta")
 
 ```
 
